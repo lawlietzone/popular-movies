@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MovieDetailData {
 
-    private String posterPath;
+    private String poster_path;
     private boolean adult;
     private String overview;
     private String releaseDate;
@@ -28,8 +28,8 @@ public class MovieDetailData {
     private Boolean video;
     private Double voteAverage;
 
-    public MovieDetailData(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity, Integer voteCount, Boolean video, Double voteAverage) {
-        this.posterPath = posterPath;
+    public MovieDetailData(String poster_path, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity, Integer voteCount, Boolean video, Double voteAverage) {
+        this.poster_path = poster_path;
         this.adult = adult;
         this.overview = overview;
         this.releaseDate = releaseDate;
@@ -46,11 +46,11 @@ public class MovieDetailData {
     }
 
     public String getPosterPath() {
-        return posterPath;
+        return poster_path;
     }
 
     public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+        this.poster_path = posterPath;
     }
 
     public boolean isAdult() {

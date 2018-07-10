@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "adam";
-   public static List<MovieDetailData>moviesDatas=new ArrayList<>();
+   public static List<MovieDataModel>moviesDatas=new ArrayList<>();
     CustomMovieArrayAdapter customMovieArrayAdapter;
     ListView listView;
     private static Retrofit retrofit = null;
@@ -48,12 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Simplification: Using a ListView instead of a RecyclerView
-       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                launchDetailActivity(position);
-            }
-        });*/
+
     }
 
     @Override
@@ -61,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -96,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 customMovieArrayAdapter = new CustomMovieArrayAdapter(getApplicationContext(), moviesDatas);
                 listView =(ListView) findViewById(R.id.movie_listV);
                 listView.setAdapter(customMovieArrayAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        launchDetailActivity(position);
+                    }
+                });
             }
 
             @Override

@@ -1,48 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <TextView
+        android:id="@+id/title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Movie title"
-        android:padding="20dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
         android:textSize="30dp"
         android:textColor="#ff5642"/>
+    <TextView
+        android:id="@+id/original_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Movie title"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#000000"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="180dp"
+            android:id="@+id/movie_IV"
+            android:layout_width="150dp"
             android:layout_height="200dp" />
         <LinearLayout
             android:layout_width="180dp"
             android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/rate_population_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rated total"
+                android:fontFamily="casual"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/rated_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rated"
+                android:fontFamily="casual"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/popularity_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="popular"
+                android:fontFamily="casual"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/original_language_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="years"
-                android:layout_margin="10dp"/>
+                android:fontFamily="casual"
+                android:layout_margin="5dp"/>
             <TextView
+                android:id="@+id/release_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="duration"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="publish time"/>
+                android:text="years"
+                android:fontFamily="casual"
+                android:layout_margin="5dp"/>
+
+
         </LinearLayout>
     </LinearLayout>
     <TextView
+        android:id="@+id/overview_TV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="discription:"/>
+        android:layout_marginLeft="15dp"
+        android:text="overView:"/>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

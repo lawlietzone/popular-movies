@@ -6,7 +6,7 @@ public class DataResponse {
     int page;
     int total_results;
     int total_pages;
-    List<MovieDetailData>results;
+    List<MovieDataModel>results;
 
     public int getPage() {
         return page;
@@ -16,11 +16,11 @@ public class DataResponse {
         this.page = page;
     }
 
-    public List<MovieDetailData> getResults() {
+    public List<MovieDataModel> getResults() {
         return results;
     }
 
-    public void setResults(List<MovieDetailData> results) {
+    public void setResults(List<MovieDataModel> results) {
         this.results = results;
     }
 

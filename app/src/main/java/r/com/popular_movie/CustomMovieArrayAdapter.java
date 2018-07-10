@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,12 +18,12 @@ import static r.com.popular_movie.MainActivity.IMAGE_URL_BASE_PATH;
  * Created by chongfei on 2017/8/4.
  */
 
-public class CustomMovieArrayAdapter extends ArrayAdapter<MovieDetailData> {
+public class CustomMovieArrayAdapter extends ArrayAdapter<MovieDataModel> {
     private Context context;
-    private List<MovieDetailData> values;
+    private List<MovieDataModel> values;
 
 
-    public CustomMovieArrayAdapter(Context context, List<MovieDetailData> values) {
+    public CustomMovieArrayAdapter(Context context, List<MovieDataModel> values) {
         super(context, R.layout.movies_item, values);
         this.context = context;
         this.values = values;

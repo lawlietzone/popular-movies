@@ -1,9 +1,5 @@
 package r.com.popular_movie;
 
-import android.widget.ImageView;
-
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,38 +7,38 @@ import java.util.List;
  * Created by chongfei on 2018/6/24.
  */
 
-public class MovieDetailData {
+public class MovieDataModel {
 
     private String poster_path;
     private boolean adult;
     private String overview;
-    private String releaseDate;
+    private String release_date;
     private List<Integer> genreIds = new ArrayList<Integer>();
-    private Integer id;
-    private String originalTitle;
-    private String originalLanguage;
+    private int id;
+    private String original_title;
+    private String original_language;
     private String title;
     private String backdropPath;
     private Double popularity;
-    private Integer voteCount;
+    private Integer vote_count;
     private Boolean video;
-    private Double voteAverage;
+    private Double vote_average;
 
-    public MovieDetailData(String poster_path, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity, Integer voteCount, Boolean video, Double voteAverage) {
+    public MovieDataModel(String poster_path, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity, Integer vote_count, Boolean video, Double vote_average) {
         this.poster_path = poster_path;
         this.adult = adult;
         this.overview = overview;
-        this.releaseDate = releaseDate;
+        this.release_date = releaseDate;
         this.genreIds = genreIds;
         this.id = id;
-        this.originalTitle = originalTitle;
-        this.originalLanguage = originalLanguage;
+        this.original_title = originalTitle;
+        this.original_language = originalLanguage;
         this.title = title;
         this.backdropPath = backdropPath;
         this.popularity = popularity;
-        this.voteCount = voteCount;
+        this.vote_count = vote_count;
         this.video = video;
-        this.voteAverage = voteAverage;
+        this.vote_average = vote_average;
     }
 
     public String getPosterPath() {
@@ -70,11 +66,11 @@ public class MovieDetailData {
     }
 
     public String getReleaseDate() {
-        return releaseDate;
+        return release_date;
     }
 
     public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+        this.release_date = releaseDate;
     }
 
     public List<Integer> getGenreIds() {
@@ -94,19 +90,19 @@ public class MovieDetailData {
     }
 
     public String getOriginalTitle() {
-        return originalTitle;
+        return original_title;
     }
 
     public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
+        this.original_title = originalTitle;
     }
 
     public String getOriginalLanguage() {
-        return originalLanguage;
+        return original_language;
     }
 
     public void setOriginalLanguage(String originalLanguage) {
-        this.originalLanguage = originalLanguage;
+        this.original_language = originalLanguage;
     }
 
     public String getTitle() {
@@ -133,12 +129,12 @@ public class MovieDetailData {
         this.popularity = popularity;
     }
 
-    public Integer getVoteCount() {
-        return voteCount;
+    public Integer getVote_count() {
+        return vote_count;
     }
 
-    public void setVoteCount(Integer voteCount) {
-        this.voteCount = voteCount;
+    public void setVote_count(Integer vote_count) {
+        this.vote_count = vote_count;
     }
 
     public Boolean getVideo() {
@@ -149,11 +145,11 @@ public class MovieDetailData {
         this.video = video;
     }
 
-    public Double getVoteAverage() {
-        return voteAverage;
+    public Double getVote_average() {
+        return vote_average;
     }
 
-    public void setVoteAverage(Double voteAverage) {
-        this.voteAverage = voteAverage;
+    public void setVote_average(Double vote_average) {
+        this.vote_average = vote_average;
     }
 }

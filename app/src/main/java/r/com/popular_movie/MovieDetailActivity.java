@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import static r.com.popular_movie.MainActivity.moviesDatas;
 public class MovieDetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+    ImageView backdrop;
     ImageView moviePoster;
     TextView title;
     TextView originalTitle;
@@ -24,6 +26,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     TextView originalLanguage;
     TextView releaseDate;
     TextView overView;
+    TextView adult_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private void closeOnError() {
         finish();
-        Toast.makeText(this, "wrong data", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
 
     private void movieUI(String image_url,int position){
@@ -75,7 +78,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         releaseDate.setText(moviesDatas.get(position).getReleaseDate());
         overView=(TextView)findViewById(R.id.overview_TV);
         overView.setText(moviesDatas.get(position).getOverview());
-
+        adult_tv=(TextView)findViewById(R.id.adult_tv);
+        adult_tv.setText(String.valueOf(moviesDatas.get(position).isAdult()));
 
     }
 }

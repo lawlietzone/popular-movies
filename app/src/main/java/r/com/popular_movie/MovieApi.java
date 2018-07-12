@@ -12,7 +12,4 @@ public interface MovieApi {
 
     @GET("movie/popular")
     Call<DataResponse> getPopularMovies(@Query("api_key") String apiKey);
-
-    @GET("movie/{id}")
-    Call<DataResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
 }

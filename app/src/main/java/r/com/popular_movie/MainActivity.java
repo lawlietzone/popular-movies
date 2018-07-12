@@ -1,6 +1,9 @@
 package r.com.popular_movie;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String IMAGE_URL_BASE_PATH="http://image.tmdb.org/t/p/w342//";
     public static final String BASE_URL = "http://api.themoviedb.org/3/";
     private final static String API_KEY = "6f0ebed546cd90804f9b8bbd4ac47673";
+    static final String STATE_MOVIE = "STATE_MOVIE";
     int movieCategorize;
 
     @Override
@@ -40,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-
         MovieApi movieApiService = retrofit.create(MovieApi.class);
-        Call<DataResponse>call = movieApiService.getTopRatedMovies(API_KEY);
-        connectAndGetApiData(call);
-
-
-        // Simplification: Using a ListView instead of a RecyclerView
-
+        getData();
+        if(movieCategorize==1){
+            Call<DataResponse> call = movieApiService.getPopularMovies(API_KEY);
+            connectAndGetApiData(call);
+        } else {
+            Call<DataResponse> call = movieApiService.getTopRatedMovies(API_KEY);
+            connectAndGetApiData(call);}
     }
 
     @Override
@@ -61,12 +65,14 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         MovieApi movieApiService = retrofit.create(MovieApi.class);
         if(id == R.id.top_rated){
-            Call<DataResponse> call = movieApiService.getPopularMovies(API_KEY);
-            connectAndGetApiData(call);
-        }
-        if(id==R.id.popular){
             Call<DataResponse> call = movieApiService.getTopRatedMovies(API_KEY);
             connectAndGetApiData(call);
+            saveData(0);
+        }
+        if(id==R.id.popular){
+            Call<DataResponse> call = movieApiService.getPopularMovies(API_KEY);
+            connectAndGetApiData(call);
+            saveData(1);
         }
 
         return super.onOptionsItemSelected(item);
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MovieDetailActivity.class);
         intent.putExtra(MovieDetailActivity.EXTRA_POSITION, position);
         startActivity(intent);
+
     }
 
 
@@ -104,5 +111,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, throwable.toString());
             }
         });
+    }
+
+    public void saveData(int data){
+        SharedPreferences prefs = getSharedPreferences(
+                "pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("adam",data);
+        editor.apply();
+    }
+
+    public void getData(){
+        SharedPreferences prefs=getSharedPreferences("pref", Context.MODE_PRIVATE);
+        movieCategorize=prefs.getInt("adam",-1);
     }
 }

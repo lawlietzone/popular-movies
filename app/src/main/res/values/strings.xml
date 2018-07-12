@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">popular-movie</string>
+
+    <string name="detail_error_message">data not available</string>
+
+    <string name="vote_count_label">vote count:</string>
+    <string name="vote_average_label">vote average:</string>
+    <string name="title_label">title:</string>
+    <string name="popularity_label">popularity:</string>
+
+    <string name="original_language_label">original language:</string>
+    <string name="original_title_label">original title:</string>
+    <string name="adult_label">adult:</string>
+    <string name="overview_label">overview:</string>
+    <string name="release_date_label">release date:</string>
+
 </resources>

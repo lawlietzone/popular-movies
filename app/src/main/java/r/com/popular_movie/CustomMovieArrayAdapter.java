@@ -34,14 +34,12 @@ public class CustomMovieArrayAdapter extends ArrayAdapter<MovieDataModel> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.movies_item, parent, false);
         ImageView moviePoster = (ImageView) rowView.findViewById(R.id.movies_iv);
-        Log.d("adam",String.valueOf(values.get(position).getOriginalTitle()));
         setMovieImage(position,moviePoster);
         return rowView;
     }
 
     public void setMovieImage(int position,ImageView moviePoster){
-        String image_url = IMAGE_URL_BASE_PATH + values.get(position).getPosterPath();
-        Log.d("dex",image_url);
+        String image_url = IMAGE_URL_BASE_PATH + values.get(position).getBackdropPath();
         Picasso.with(context)
                 .load(image_url)
                 .placeholder(android.R.drawable.sym_def_app_icon)

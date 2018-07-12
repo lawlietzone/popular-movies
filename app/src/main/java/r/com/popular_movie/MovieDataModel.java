@@ -18,7 +18,7 @@ public class MovieDataModel {
     private String original_title;
     private String original_language;
     private String title;
-    private String backdropPath;
+    private String backdrop_path;
     private Double popularity;
     private Integer vote_count;
     private Boolean video;
@@ -34,7 +34,7 @@ public class MovieDataModel {
         this.original_title = originalTitle;
         this.original_language = originalLanguage;
         this.title = title;
-        this.backdropPath = backdropPath;
+        this.backdrop_path = backdropPath;
         this.popularity = popularity;
         this.vote_count = vote_count;
         this.video = video;
@@ -114,11 +114,11 @@ public class MovieDataModel {
     }
 
     public String getBackdropPath() {
-        return backdropPath;
+        return backdrop_path;
     }
 
     public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
+        this.backdrop_path = backdropPath;
     }
 
     public Double getPopularity() {

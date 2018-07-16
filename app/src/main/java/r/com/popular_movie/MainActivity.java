@@ -1,5 +1,6 @@
 package r.com.popular_movie;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,14 +27,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "adam";
-   public static List<MovieDataModel>moviesDatas=new ArrayList<>();
+    public static List<MovieDataModel>moviesDatas=new ArrayList<>();
+    public static List<MovieDataModel>movieDataModelList=new ArrayList<>();
     CustomMovieArrayAdapter customMovieArrayAdapter;
     ListView listView;
     private static Retrofit retrofit = null;
     public static final String IMAGE_URL_BASE_PATH="http://image.tmdb.org/t/p/w342//";
     public static final String BASE_URL = "http://api.themoviedb.org/3/";
     private final static String API_KEY = "6f0ebed546cd90804f9b8bbd4ac47673";
-    static final String STATE_MOVIE = "STATE_MOVIE";
+    private static final String STATE_MOVIE = "STATE_MOVIE";
+    private static final String sharedPreferences="pref";
+    private static final String KEY="KEY";
+    private static final int DEFAULT_VALUE=-1;
     int movieCategorize;
 
     @Override
@@ -46,12 +53,16 @@ public class MainActivity extends AppCompatActivity {
         }
         MovieApi movieApiService = retrofit.create(MovieApi.class);
         getData();
-        if(movieCategorize==1){
+        if (movieCategorize == 1) {
+            getSupportActionBar().setTitle(R.string.popular_movie_label);
             Call<DataResponse> call = movieApiService.getPopularMovies(API_KEY);
             connectAndGetApiData(call);
         } else {
+            getSupportActionBar().setTitle(R.string.top_rate_movie_label);
             Call<DataResponse> call = movieApiService.getTopRatedMovies(API_KEY);
-            connectAndGetApiData(call);}
+            connectAndGetApiData(call);
+        }
+
     }
 
     @Override
@@ -67,11 +78,13 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.top_rated){
             Call<DataResponse> call = movieApiService.getTopRatedMovies(API_KEY);
             connectAndGetApiData(call);
+            getSupportActionBar().setTitle(R.string.top_rate_movie_label);
             saveData(0);
         }
         if(id==R.id.popular){
             Call<DataResponse> call = movieApiService.getPopularMovies(API_KEY);
             connectAndGetApiData(call);
+            getSupportActionBar().setTitle(R.string.popular_movie_label);
             saveData(1);
         }
 
@@ -94,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DataResponse> call, Response<DataResponse> response) {
                moviesDatas = response.body().getResults();
-                Log.d(TAG, "Number of movies received: " + moviesDatas.size());
                 customMovieArrayAdapter = new CustomMovieArrayAdapter(getApplicationContext(), moviesDatas);
                 listView =(ListView) findViewById(R.id.movie_listV);
                 listView.setAdapter(customMovieArrayAdapter);
@@ -115,14 +127,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveData(int data){
         SharedPreferences prefs = getSharedPreferences(
-                "pref", Context.MODE_PRIVATE);
+                sharedPreferences, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("adam",data);
+        editor.putInt(KEY,data);
         editor.apply();
     }
 
     public void getData(){
-        SharedPreferences prefs=getSharedPreferences("pref", Context.MODE_PRIVATE);
-        movieCategorize=prefs.getInt("adam",-1);
+        SharedPreferences prefs=getSharedPreferences(sharedPreferences, Context.MODE_PRIVATE);
+        movieCategorize=prefs.getInt(KEY,DEFAULT_VALUE);
     }
 }

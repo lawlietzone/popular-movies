@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static Retrofit retrofit = null;
     public static final String IMAGE_URL_BASE_PATH="http://image.tmdb.org/t/p/w342//";
     public static final String BASE_URL = "http://api.themoviedb.org/3/";
-    private final static String API_KEY = "6f0ebed546cd90804f9b8bbd4ac47673";
+    private final static String API_KEY = "your key";
     private static final String STATE_MOVIE = "STATE_MOVIE";
     private static final String sharedPreferences="pref";
     private static final String KEY="KEY";

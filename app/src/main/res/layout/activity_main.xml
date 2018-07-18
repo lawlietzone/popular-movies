@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="r.com.popular_movie.MainActivity">
 
-    <ListView
-        android:id="@+id/movie_listV"
+    <GridView
+        android:id="@+id/grid_view"
+        android:numColumns="2"
+        android:gravity="center"
+        android:columnWidth="140dp"
         android:layout_width="match_parent"
-        android:backgroundTint="#ffffff"
         android:layout_height="match_parent"
         android:background="#000000">
-    </ListView>
+    </GridView>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

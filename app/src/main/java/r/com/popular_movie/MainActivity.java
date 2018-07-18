@@ -1,7 +1,5 @@
 package r.com.popular_movie;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toolbar;
+import android.widget.GridView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,13 +24,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "adam";
     public static List<MovieDataModel>moviesDatas=new ArrayList<>();
-    public static List<MovieDataModel>movieDataModelList=new ArrayList<>();
-    CustomMovieArrayAdapter customMovieArrayAdapter;
-    ListView listView;
+    GridViewAdapter gridViewAdapter;
+    GridView gridView;
     private static Retrofit retrofit = null;
     public static final String IMAGE_URL_BASE_PATH="http://image.tmdb.org/t/p/w342//";
     public static final String BASE_URL = "http://api.themoviedb.org/3/";
-    private final static String API_KEY = "your key";
+
+    private final static String API_KEY = "your_API_key";
+
     private static final String STATE_MOVIE = "STATE_MOVIE";
     private static final String sharedPreferences="pref";
     private static final String KEY="KEY";
@@ -107,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DataResponse> call, Response<DataResponse> response) {
                moviesDatas = response.body().getResults();
-                customMovieArrayAdapter = new CustomMovieArrayAdapter(getApplicationContext(), moviesDatas);
-                listView =(ListView) findViewById(R.id.movie_listV);
-                listView.setAdapter(customMovieArrayAdapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                gridViewAdapter = new GridViewAdapter(getApplicationContext(), moviesDatas);
+                gridView =(GridView) findViewById(R.id.grid_view);
+                gridView.setAdapter(gridViewAdapter);
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         launchDetailActivity(position);

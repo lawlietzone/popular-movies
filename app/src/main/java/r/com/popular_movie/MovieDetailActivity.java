@@ -1,13 +1,18 @@
 package r.com.popular_movie;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.squareup.picasso.Picasso;
 
@@ -25,23 +30,19 @@ public class MovieDetailActivity extends AppCompatActivity {
     private static final int DEFAULT_POSITION = -1;
     ImageView backdrop;
     ImageView moviePoster;
-    TextView originalTitle;
-    TextView totalRated;
-    TextView rated;
-    TextView popularity;
-    TextView originalLanguage;
-    TextView releaseDate;
-    TextView overView;
-    TextView adult_tv;
     @BindViews({R.id.title_tv,R.id.original_title_tv,R.id.rate_population_tv,R.id.rated_tv,R.id.popularity_tv,R.id.original_language_TV,R.id.release_date_tv,R.id.overview_TV,R.id.adult_tv})
     List<TextView> textViewList;
-
+    VideoView videoView;
+    MediaController mediaController;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
         ButterKnife.bind(this);
+        button=(Button)findViewById(R.id.button);
+
         Intent intent = getIntent();
         if (intent == null) {
             closeOnError();
@@ -80,6 +81,14 @@ public class MovieDetailActivity extends AppCompatActivity {
         textViewList.get(6).setText(moviesDatas.get(position).getReleaseDate());
         textViewList.get(7).setText(moviesDatas.get(position).getOverview());
         textViewList.get(8).setText(String.valueOf(moviesDatas.get(position).isAdult()));
+    }
 
+    public void  videoPlay(View view){
+        videoView =(VideoView)findViewById(R.id.video_view);
+        String video_url="https://www.youtube.com/watch?v=c25GKl5VNeY";
+        Uri uri=Uri.parse(video_url);
+        videoView.setVideoURI(uri);
+        videoView.requestFocus();
+        videoView.start();
     }
 }

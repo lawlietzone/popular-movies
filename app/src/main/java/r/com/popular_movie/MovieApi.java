@@ -12,4 +12,11 @@ public interface MovieApi {
 
     @GET("movie/popular")
     Call<DataResponse> getPopularMovies(@Query("api_key") String apiKey);
+
+    @GET("movie/{id}/videos")
+    Call<DataResponse> getMovieVideo(@Query("api_key") String apiKey);
+
+    @GET("movie/{id}/reviews")
+    Call<DataResponse> getMovieReview(@Query("api_key") String apiKey);
+
 }

@@ -1,5 +1,7 @@
 package r.com.popular_movie;
 
+import android.graphics.Movie;
+
 import java.util.List;
 
 public class DataResponse {
@@ -7,6 +9,15 @@ public class DataResponse {
     int total_results;
     int total_pages;
     List<MovieDataModel>results;
+    List<MovieTrailerModel>videoResult;
+
+    public List<MovieTrailerModel> getVideoResult() {
+        return videoResult;
+    }
+
+    public void setVideoResult(List<MovieTrailerModel> videoResult) {
+        this.videoResult = videoResult;
+    }
 
     public int getPage() {
         return page;

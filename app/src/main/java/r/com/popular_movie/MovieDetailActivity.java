@@ -49,6 +49,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     Button button;
     private static Retrofit retrofit = null;
     List<MovieTrailerModel>trailerModels=new ArrayList<>();
+    int shae;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

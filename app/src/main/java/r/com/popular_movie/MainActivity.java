@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY="KEY";
     private static final int DEFAULT_VALUE=-1;
     int movieCategorize;
-
+    int chongfei;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -14,9 +14,9 @@ public interface MovieApi {
     Call<DataResponse> getPopularMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{id}/videos")
-    Call<DataResponse> getMovieVideo(@Path("id") int id,@Query("api_key") String apiKey);
+    Call<VideoDataResponse> getMovieVideo(@Path("id") int id,@Query("api_key") String apiKey);
 
-    @GET("movie/id/reviews")
-    Call<DataResponse> getMovieReview(@Query("api_key") String apiKey,@Path("id") int groupId);
+    @GET("movie/{id}/reviews")
+    Call<ReviewDataReponse> getMovieReviews(@Path("id") int id,@Query("api_key") String apiKey);
 
 }

@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int DEFAULT_VALUE=-1;
     int movieCategorize;
     int chongfei;
+    int cdddd;
+    double ddd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

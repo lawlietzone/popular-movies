@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,8 +25,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
 
+import java.net.IDN;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +98,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
         String image_url = IMAGE_URL_BASE_PATH + moviesDatas.get(position).getPosterPath();
         movieUI(image_url,position);
-        final int id=moviesDatas.get(position).getId();
+         int id=moviesDatas.get(position).getId();
         Call<VideoDataResponse> call = movieApiService.getMovieVideo(id,API_KEY);
         connectAndGetApiData(call);
         Call<ReviewDataReponse>reviewCall=movieApiService.getMovieReviews(id,API_KEY);
@@ -116,7 +120,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 }
             }
         });
-
+        Log.d("get",String.valueOf(movieKey.size()));
     }
 
     public void saveData(boolean data,String key){
@@ -198,6 +202,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 for(int c=0;c<trailerModels.size();c++){
                     movieKey.add( "Trailer"+String.valueOf(c+1)+"  play");
                 }
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
                         android.R.layout.simple_list_item_1,movieKey );
                 ListView listView=findViewById(R.id.trailer_lv);
@@ -216,7 +221,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<VideoDataResponse> call, Throwable throwable) {
-                Log.e(TAG, throwable.toString());
+                Log.e("dee", throwable.toString());
             }
         });
     }

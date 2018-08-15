@@ -1,14 +1,14 @@
 package r.com.popular_movie;
 
 public class MovieTrailerModel {
-    int id;
+    String id;
     String key;
     String name;
     String site;
     int size;
     String type;
 
-    public MovieTrailerModel(int id, String key, String name, String site, int size, String type) {
+    public MovieTrailerModel(String id, String key, String name, String site, int size, String type) {
         this.id = id;
         this.key = key;
         this.name = name;
@@ -17,11 +17,11 @@ public class MovieTrailerModel {
         this.type = type;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

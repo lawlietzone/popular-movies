@@ -70,6 +70,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     int sha=0;
     int movieCategorize;
     Boolean favor;
+    DatabaseHelper db;
 
 
     @Override
@@ -103,17 +104,21 @@ public class MovieDetailActivity extends AppCompatActivity {
         connectAndGetApiData(call);
         Call<ReviewDataReponse>reviewCall=movieApiService.getMovieReviews(id,API_KEY);
         reviewCall(reviewCall);
-        MaterialFavoriteButton materialFavoriteButtonNice =
-                (MaterialFavoriteButton) findViewById(R.id.favorite_button);
+        MaterialFavoriteButton materialFavoriteButtonNice = (MaterialFavoriteButton) findViewById(R.id.favorite_button);
         getData(moviesDatas.get(position).getTitle());
         if(favor==true){
             materialFavoriteButtonNice.setFavorite(true);
         }
+
+        db=new DatabaseHelper(this);
+
         materialFavoriteButtonNice.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
             @Override
             public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
                 if(favorite){
                     saveData(favorite,moviesDatas.get(position).getTitle());
+                    db.insertData(moviesDatas.get(position));
+
                 }else {
                     saveData(false,moviesDatas.get(position).getTitle());
 

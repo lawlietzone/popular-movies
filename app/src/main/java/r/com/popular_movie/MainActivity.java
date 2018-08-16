@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY="KEY";
     private static final int DEFAULT_VALUE=-1;
     int movieCategorize;
-    int chongfei;
-    int cdddd;
-    double ddd;
+    DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             Call<DataResponse> call = movieApiService.getTopRatedMovies(API_KEY);
             connectAndGetApiData(call);
         }
+
 
     }
 
@@ -84,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
             connectAndGetApiData(call);
             getSupportActionBar().setTitle(R.string.popular_movie_label);
             saveData(1);
+        }
+        if(id==R.id.favorite_movie){
+            
         }
 
         return super.onOptionsItemSelected(item);

@@ -21,4 +21,5 @@ public class VideoDataResponse {
     public void setMovieTrailerModels(List<MovieTrailerModel> results) {
         this.results = results;
     }
+
 }

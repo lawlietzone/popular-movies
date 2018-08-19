@@ -55,18 +55,13 @@ public class MovieDetailActivity extends AppCompatActivity {
     ImageView moviePoster;
     @BindViews({R.id.title_tv,R.id.original_title_tv,R.id.rate_population_tv,R.id.rated_tv,R.id.popularity_tv,R.id.original_language_TV,R.id.release_date_tv,R.id.overview_TV,R.id.adult_tv})
     List<TextView> textViewList;
-    VideoView videoView;
-    MediaController mediaController;
     Button button;
     private static Retrofit retrofit = null;
-    Retrofit retrofit2=null;
     List<MovieTrailerModel>trailerModels;
     List<String> movieKey=new ArrayList<>();
     List<ReviewDetailModel>reviewDetailModels;
-    RatingBar mRatingBar;
     private RecyclerView mNumbersList;
     private ReviewList reviewList;
-    private ImageView favorite;
     int sha=0;
     int movieCategorize;
     Boolean favor;
@@ -125,7 +120,12 @@ public class MovieDetailActivity extends AppCompatActivity {
                 }
             }
         });
-        Log.d("get",String.valueOf(movieKey.size()));
+        textViewList.get(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchDetailActivity();
+            }
+        });
     }
 
     public void saveData(boolean data,String key){
@@ -229,6 +229,11 @@ public class MovieDetailActivity extends AppCompatActivity {
                 Log.e("dee", throwable.toString());
             }
         });
+    }
+
+    private void launchDetailActivity() {
+        Intent intent = new Intent(this, favorite.class);
+        startActivity(intent);
     }
 
 

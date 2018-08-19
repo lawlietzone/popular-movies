@@ -3,6 +3,7 @@ package r.com.popular_movie;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,9 +85,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(R.string.popular_movie_label);
             saveData(1);
         }
-        if(id==R.id.favorite_movie){
-            
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
